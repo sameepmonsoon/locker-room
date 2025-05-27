@@ -73,18 +73,7 @@ const Header = () => {
           className="flex-1"
           cachePolicy="memory-disk"
         />
-      </VStack><Box className="w-[160px] h-[145px] md:w-[224px] md:h-[194px] lg:w-[274px] lg:h-[244px] xl:w-[390px] xl:h-[328px]">
-            <ComponentCard
-              component={{
-                title: "UI Elemetns",
-                link: "/elements",
-                url: "https://i.imgur.com/WOc44VL.png",
-                darkUrl: "https://i.imgur.com/lXBHovv.png",
-              }}
-              //@ts-ignore
-              onPress={() => router.push("/elements")}
-            />
-          </Box>
+      </VStack>
     </HStack>
   );
 };
