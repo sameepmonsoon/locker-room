@@ -17,8 +17,7 @@ const CustomBackButton = () => {
       onPress={() => {
         router.back();
       }}
-      className="web:ml-2 ios:-ml-2 android:mr-4"
-    >
+      className="web:ml-2 ios:-ml-2 android:mr-4">
       <Icon as={ChevronLeftIcon} size="xl" />
     </Pressable>
   );
@@ -53,8 +52,7 @@ export default function RootLayout() {
   return (
     <>
       <StatusBar
-        style="auto" //android
-        backgroundColor={`${colorMode == "light" ? "#F6F6F6" : "#272625"}`}
+        style="light" //android
       />
       <ColorModeContext.Provider value={{ colorMode }}>
         <GluestackUIProvider mode={colorMode}>
@@ -68,9 +66,8 @@ export default function RootLayout() {
           </Stack>
 
           <Fab
-            className="bottom-10 sm:right-10 right-6 p-4 z-0"
-            onPress={handleColorMode}
-          >
+            className="bottom-14 sm:right-10 right-6 p-4 z-0"
+            onPress={handleColorMode}>
             <Icon
               as={colorMode === "light" ? SunIcon : MoonIcon}
               className="text-typography-0"
