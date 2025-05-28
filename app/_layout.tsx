@@ -68,9 +68,8 @@ export default function RootLayout() {
           </Stack>
 
           <Fab
-            className="bottom-10 sm:right-10 right-6 p-4 z-0"
-            onPress={handleColorMode}
-          >
+            className="bottom-14 sm:right-10 right-6 p-4 z-[11]"
+            onPress={handleColorMode}>
             <Icon
               as={colorMode === "light" ? SunIcon : MoonIcon}
               className="text-typography-0"
