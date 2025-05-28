@@ -52,7 +52,8 @@ export default function RootLayout() {
   return (
     <>
       <StatusBar
-        style="light" //android
+        style="auto" //android
+        backgroundColor={`${colorMode == "light" ? "#F6F6F6" : "#272625"}`}
       />
       <ColorModeContext.Provider value={{ colorMode }}>
         <GluestackUIProvider mode={colorMode}>
@@ -66,7 +67,7 @@ export default function RootLayout() {
           </Stack>
 
           <Fab
-            className="bottom-14 sm:right-10 right-6 p-4 z-0"
+            className="bottom-14 sm:right-10 right-6 p-4 z-[11]"
             onPress={handleColorMode}>
             <Icon
               as={colorMode === "light" ? SunIcon : MoonIcon}
