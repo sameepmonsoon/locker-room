@@ -4,9 +4,8 @@ import { Text } from "@/components/ui/text";
 import { Center } from "@/components/ui/center";
 import { Box } from "@/components/ui/box";
 import { Image } from "@/components/ui/image";
-import { BadgeText } from "@/components/ui/badge";
+import { BadgeText , Badge } from "@/components/ui/badge";
 import { VStack } from "@/components/ui/vstack";
-import { Badge } from "@/components/ui/badge";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { examples } from "@/components/docs/examples/pressable";
 

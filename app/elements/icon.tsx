@@ -1,5 +1,10 @@
 import React from "react";
-import { Icon } from "@/components/ui/icon";
+import { Icon ,
+  TrashIcon,
+  CalendarDaysIcon,
+  RepeatIcon,
+  CopyIcon,
+} from "@/components/ui/icon";
 import { Center } from "@/components/ui/center";
 import { Grid, GridItem } from "@/components/ui/grid";
 import {
@@ -9,12 +14,6 @@ import {
   MessageSquare,
   Camera,
 } from "lucide-react-native";
-import {
-  TrashIcon,
-  CalendarDaysIcon,
-  RepeatIcon,
-  CopyIcon,
-} from "@/components/ui/icon";
 import { Box } from "@/components/ui/box";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { examples } from "@/components/docs/examples/icon";
