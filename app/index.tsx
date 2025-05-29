@@ -12,6 +12,7 @@ import { VStack } from "@/components/ui/vstack";
 import { Heading } from "@/components/ui/heading";
 import { ChevronRightIcon, Icon } from "@/components/ui/icon";
 import { ColorModeContext, useTheme } from "@/context/theme-context";
+import OnBoardingCarousel from "@/components/custom/Carousel/OnBoardingCarousel";
 
 cssInterop(SafeAreaView, { className: "style" });
 cssInterop(ExpoImage, { className: "style" });
@@ -83,12 +84,14 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-background-0 relative">
-      <ScrollView>
+      <OnBoardingCarousel />
+      {/* <ScrollView>
         <Box className="bg-background-50 flex-1">
           <Header />
         </Box>
+
         <HStack className="flex-wrap justify-center gap-x-3 gap-y-4 md:gap-x-4 lg:gap-x-7 lg:gap-y-8 py-6 px-5 md:px-8 md:pt-9 xl:pt-[90px] lg:pt-[70px] lg:px-[70px] xl:px-[100px] max-w-[1730px] mx-auto">
-          {/* <Box className="w-[160px] h-[145px] md:w-[224px] md:h-[194px] lg:w-[274px] lg:h-[244px] xl:w-[390px] xl:h-[328px]">
+          <Box className="w-[160px] h-[145px] md:w-[224px] md:h-[194px] lg:w-[274px] lg:h-[244px] xl:w-[390px] xl:h-[328px]">
             <ComponentCard
               component={{
                 title: "UI Elemetns",
@@ -99,9 +102,9 @@ export default function HomeScreen() {
               //@ts-ignore
               onPress={() => router.push("/elements")}
             />
-          </Box> */}
+          </Box>
         </HStack>
-      </ScrollView>
+      </ScrollView> */}
     </SafeAreaView>
   );
 }
