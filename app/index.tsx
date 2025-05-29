@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView } from "@/components/ui/scroll-view";
 import { Box } from "@/components/ui/box";
 import { Image as ExpoImage } from "expo-image";
 import { Text } from "@/components/ui/text";
@@ -12,7 +11,7 @@ import { VStack } from "@/components/ui/vstack";
 import { Heading } from "@/components/ui/heading";
 import { ChevronRightIcon, Icon } from "@/components/ui/icon";
 import { ColorModeContext, useTheme } from "@/context/theme-context";
-import OnBoardingCarousel from "@/components/custom/Carousel/OnBoardingCarousel";
+import OnBoardingCarousel from "@/components/custom/carousel/on-boarding-carousel";
 
 cssInterop(SafeAreaView, { className: "style" });
 cssInterop(ExpoImage, { className: "style" });

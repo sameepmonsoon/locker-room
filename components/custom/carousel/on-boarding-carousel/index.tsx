@@ -8,6 +8,8 @@ import { Text } from "@/components/ui/text";
 import { HStack } from "@/components/ui/hstack";
 import { Pressable } from "@/components/ui/pressable";
 import { useRouter } from "expo-router";
+import { cn } from "@/utils/utils";
+import { useColorScheme } from "@/hooks/useColorScheme";
 
 const { width, height } = Dimensions.get("window");
 
@@ -15,24 +17,46 @@ type Props = {};
 
 const OnBoardingCarousel = (props: Props) => {
   const router = useRouter();
+  const { colorMode, isDarkColorScheme }: any = useColorScheme();
+  console.log({ colorMode, isDarkColorScheme });
   const DoneButton = ({ ...props }) => (
     <Pressable
-      className="bg-black text-white px-[25px] py-[12px] rounded-[25px] mr-[15px] shadow-lg shadow-[#08cf5b]/30 shadow-[0_2px_4px]"
+      className={cn(
+        "px-[25px] py-[12px] rounded-[25px] mr-[15px] shadow-lg shadow-[#08cf5b]/30 shadow-[0_2px_4px]",
+        isDarkColorScheme ? "bg-black" : "bg-white"
+      )}
       {...props}
       onPress={() => router.push("/elements")}>
-      <Text className="text-sm lg:text-base xl:text-lg">Get Started</Text>
+      <Text
+        className={cn(
+          "text-sm lg:text-base xl:text-lg text-white",
+          isDarkColorScheme ? "text-white" : "text-black"
+        )}>
+        Get Started
+      </Text>
     </Pressable>
   );
 
   const NextButton = ({ ...props }) => (
-    <Pressable className="px-5 py-2.5 rounded-[20px] mr-[15px]" {...props}>
-      <Text className="text-sm lg:text-base xl:text-lg">Next</Text>
+    <Pressable
+      className={cn(
+        "px-5 py-2.5 rounded-[20px] mr-[15px]",
+        isDarkColorScheme ? "bg-black" : "bg-white"
+      )}
+      {...props}>
+      <Text
+        className={cn(
+          "text-sm lg:text-base xl:text-lg text-white",
+          isDarkColorScheme ? "text-white" : "text-black"
+        )}>
+        Next
+      </Text>
     </Pressable>
   );
 
   const SkipButton = ({ ...props }) => (
     <Pressable style={styles.skipButtonContainer} {...props}>
-      <Text className="text-sm lg:text-base xl:text-lg">Skip</Text>
+      <Text className="text-sm lg:text-base xl:text-lg text-black">Skip</Text>
     </Pressable>
   );
 
