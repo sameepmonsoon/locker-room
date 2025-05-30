@@ -1,9 +1,5 @@
-import React, { useState } from "react";
-import { View, Text } from "react-native";
-import PhoneInput, {
-  isValidPhoneNumber,
-} from "react-native-international-phone-number";
-import { HStack } from "../ui/hstack";
+import { useState } from "react";
+import PhoneInput from "react-native-international-phone-number";
 
 export default function PhoneNumberInput() {
   const [selectedCountry, setSelectedCountry] = useState<any>(null);
@@ -18,25 +14,11 @@ export default function PhoneNumberInput() {
   }
 
   return (
-    <HStack className="p-6 w-full flex-1">
-      <PhoneInput
+       <PhoneInput
         value={inputValue}
         onChangePhoneNumber={handleInputValue}
         selectedCountry={selectedCountry}
         onChangeSelectedCountry={handleSelectedCountry}
       />
-      <View style={{ marginTop: 10 }}>
-        <Text>
-          Country: {`${selectedCountry?.name?.en} (${selectedCountry?.cca2})`}
-        </Text>
-        <Text>
-          Phone Number: {`${selectedCountry?.callingCode} ${inputValue}`}
-        </Text>
-        <Text>
-          isValid:{" "}
-          {isValidPhoneNumber(inputValue, selectedCountry) ? "true" : "false"}
-        </Text>
-      </View>
-    </HStack>
-  );
+        );
 }
