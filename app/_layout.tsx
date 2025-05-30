@@ -38,7 +38,7 @@ export default function RootLayout() {
     setColorMode((prevMode: string) =>
       prevMode === "light" ? "dark" : "light"
     );
-  };
+  };  
 
   const getHeaderOptions = (title: string) => ({
     headerTitle: title,
@@ -53,7 +53,7 @@ export default function RootLayout() {
     <>
       <StatusBar
         style="auto" //android
-        backgroundColor={`${colorMode == "light" ? "#F6F6F6" : "#272625"}`}
+        backgroundColor={`${colorMode === "light" ? "#F6F6F6" : "#272625"}`}
       />
       <ColorModeContext.Provider value={{ colorMode }}>
         <GluestackUIProvider mode={colorMode}>

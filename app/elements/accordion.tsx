@@ -50,7 +50,7 @@ const AccordionDemo = () => {
               </AccordionHeader>
               <AccordionContent ref={accRef}>
                 <AccordionContentText>
-                  You can place your order by clicking the "Order Now" button.
+               {`   You can place your order by clicking the "Order Now" button.`}
                 </AccordionContentText>
               </AccordionContent>
             </AccordionItem>

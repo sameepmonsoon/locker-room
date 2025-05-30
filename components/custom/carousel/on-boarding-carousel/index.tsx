@@ -17,8 +17,8 @@ type Props = {};
 
 const OnBoardingCarousel = (props: Props) => {
   const router = useRouter();
-  const { colorMode, isDarkColorScheme }: any = useColorScheme();
-  console.log({ colorMode, isDarkColorScheme });
+  const {  isDarkColorScheme }: any = useColorScheme();
+  console.log({  isDarkColorScheme });
   const DoneButton = ({ ...props }) => (
     <Pressable
       className={cn(
@@ -26,7 +26,7 @@ const OnBoardingCarousel = (props: Props) => {
         isDarkColorScheme ? "bg-black" : "bg-white"
       )}
       {...props}
-      onPress={() => router.push("/elements")}>
+      onPress={() => router.push("/(auth)/login")}>
       <Text
         className={cn(
           "text-sm lg:text-base xl:text-lg text-white",

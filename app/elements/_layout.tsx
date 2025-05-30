@@ -43,7 +43,7 @@ export default function RootLayout() {
     <>
       <StatusBar
         style="auto" //android
-        backgroundColor={`${colorMode == "light" ? "#F6F6F6" : "#272625"}`}
+        backgroundColor={`${colorMode === "light" ? "#F6F6F6" : "#272625"}`}
       />
       <GluestackUIProvider mode={colorMode}>
         <Stack screenOptions={{ animation: "slide_from_right" }}>
