@@ -39,6 +39,7 @@ const LoginForm = () => {
   const generateOtpMutation = useMutation({
     mutationFn: async () => {
       const values = getValues();
+      return { success: true, data: values };
     },
     onSuccess: (response: any) => {},
     onError: (err: Error) => {},
@@ -46,7 +47,7 @@ const LoginForm = () => {
 
   const onSubmit = (data: SignInSchemaType) => {
     console.log("Form submitted:", data);
-    // Handle sign in logic here
+    generateOtpMutation.mutate();
   };
 
   return (
