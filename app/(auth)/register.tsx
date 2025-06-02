@@ -10,8 +10,8 @@ const RegisterPage = () => {
   return (
     <ScrollView
       className="bg-background-0"
-      contentContainerClassName="px-3 pb-6">
-      <Box className="p-5 rounded-lg m-3 mt-5 bg-background-0 gap-2 min-h-[200px] max-w-[600px] lg:min-w-[700px] w-full self-center overflow-hidden">
+      contentContainerClassName="px-3 pb-6 h-full">
+      <Box className="p-5 rounded-lg m-3 mt-5 bg-background-0 gap-2 min-h-[200px] max-w-[600px] lg:min-w-[700px] w-full h-full justify-center self-center overflow-hidden">
         <Text className="text-2xl font-bold text-center h-8">
           Welcome to Locker Room
         </Text>
