@@ -8,6 +8,7 @@ import { Fab } from "@/components/ui/fab";
 import { Pressable } from "@/components/ui/pressable";
 import { StatusBar } from "expo-status-bar";
 import { ColorModeContext } from "@/context/theme-context";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const CustomBackButton = () => {
   const router = useRouter();
@@ -24,6 +25,7 @@ const CustomBackButton = () => {
 };
 
 export default function RootLayout() {
+  const queryClient = new QueryClient();
   const [colorMode, setColorMode] = React.useState<"light" | "dark">("light");
 
   const styles = StyleSheet.create({
@@ -50,7 +52,7 @@ export default function RootLayout() {
   });
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <StatusBar
         style="auto" //android
         backgroundColor={`${colorMode === "light" ? "#F6F6F6" : "#272625"}`}
@@ -77,6 +79,6 @@ export default function RootLayout() {
           </Fab>
         </GluestackUIProvider>
       </ColorModeContext.Provider>
-    </>
+    </QueryClientProvider>
   );
 }

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import React from "react";
 import { Divider } from "@/components/ui/divider";
 import { Box } from "@/components/ui/box";
@@ -7,7 +7,7 @@ type Props = {};
 
 const HorizontalDivider: React.FC<Props> = (props) => {
   return (
-    <Box className="flex flex-row justify-center items-center gap-2">
+    <Box className="flex flex-row justify-center items-center gap-2 my-2.5">
       <Divider />
       <Text className="text-center">or</Text>
       <Divider />

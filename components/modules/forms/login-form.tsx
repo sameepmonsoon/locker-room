@@ -19,7 +19,7 @@ import { LinkText } from "@/components/ui/link";
 import { HStack } from "@/components/ui/hstack";
 import { Link } from "expo-router";
 import { SignInSchema, SignInSchemaType } from "@/schema/auth/login";
-
+import { useMutation } from "@tanstack/react-query";
 const LoginForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -27,12 +27,21 @@ const LoginForm = () => {
     control,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm<SignInSchemaType>({
     resolver: zodResolver(SignInSchema),
     defaultValues: {
       phoneNumber: "",
       password: "",
     },
+  });
+  // API Call
+  const generateOtpMutation = useMutation({
+    mutationFn: async () => {
+      const values = getValues();
+    },
+    onSuccess: (response: any) => {},
+    onError: (err: Error) => {},
   });
 
   const onSubmit = (data: SignInSchemaType) => {
