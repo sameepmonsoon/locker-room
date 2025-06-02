@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import React from "react";
 import { Divider } from "@/components/ui/divider";
 import { Box } from "@/components/ui/box";
