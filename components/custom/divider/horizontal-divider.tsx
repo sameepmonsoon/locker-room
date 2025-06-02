@@ -7,7 +7,7 @@ type Props = {};
 
 const HorizontalDivider: React.FC<Props> = (props) => {
   return (
-    <Box className="flex flex-row justify-center items-center gap-2">
+    <Box className="flex flex-row justify-center items-center gap-2 my-2.5">
       <Divider />
       <Text className="text-center">or</Text>
       <Divider />
