@@ -17,8 +17,7 @@ type Props = {};
 
 const OnBoardingCarousel = (props: Props) => {
   const router = useRouter();
-  const {  isDarkColorScheme }: any = useColorScheme();
-  console.log({  isDarkColorScheme });
+  const { isDarkColorScheme }: any = useColorScheme();
   const DoneButton = ({ ...props }) => (
     <Pressable
       className={cn(
