@@ -1,101 +1,75 @@
 import React from "react";
 import {
   FormControl,
-  FormControlHelper,
   FormControlLabel,
   FormControlLabelText,
-  FormControlHelperText,
   FormControlError,
   FormControlErrorText,
   FormControlErrorIcon,
 } from "@/components/ui/form-control";
 import { Input, InputField, InputSlot, InputIcon } from "@/components/ui/input";
-import { AlertCircleIcon, Icon } from "@/components/ui/icon";
+import { AlertCircleIcon } from "@/components/ui/icon";
 import { Button, ButtonText } from "@/components/ui/button";
 import { Center } from "@/components/ui/center";
-import { EyeIcon, EyeOffIcon } from "lucide-react-native";
+import { EyeIcon, EyeOffIcon, Phone } from "lucide-react-native";
 import { Text } from "@/components/ui/text";
 import { useForm, Controller } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link, LinkText } from "@/components/ui/link";
+import { LinkText } from "@/components/ui/link";
 import { HStack } from "@/components/ui/hstack";
-import PhoneInput from "react-native-international-phone-number";
-import { useColorScheme } from "@/hooks/useColorScheme";
+import { Link } from "expo-router";
+import { SignInSchema, SignInSchemaType } from "@/schema/auth/login";
 
-// Define validation schema with Zod
-const signInSchema = z.object({
-  phoneNumber: z
-    .string()
-    .trim() // Remove whitespace from both ends
-    .transform((val) => val.replace(/\s/g, "")) // Remove all non-digit characters
-    .refine((val) => val.length === 10, {
-      message: "Phone number must be exactly 10 digits",
-    }),
-  password: z
-    .string()
-    .min(6, { message: "Password must be at least 6 characters" }),
-});
-
-type SignInFormData = z.infer<typeof signInSchema>;
-
-const SignInForm = () => {
+const LoginForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);
-  const [selectedCountry, setSelectedCountry] = React.useState(null);
-  const { isDarkColorScheme } = useColorScheme();
+
   const {
     control,
     handleSubmit,
     formState: { errors },
-    setValue,
-    watch,
-  } = useForm<SignInFormData>({
-    resolver: zodResolver(signInSchema),
+  } = useForm<SignInSchemaType>({
+    resolver: zodResolver(SignInSchema),
     defaultValues: {
       phoneNumber: "",
       password: "",
     },
   });
 
-  const phoneNumberValue = watch("phoneNumber");
-
-  const handlePhoneNumberChange = (value: string) => {
-    if (value.length <= 11)
-      setValue("phoneNumber", value, { shouldValidate: true });
-  };
-
-  const handleCountryChange = (country: any) => {
-    setSelectedCountry(country);
-  };
-
-  const onSubmit = (data: SignInFormData) => {
+  const onSubmit = (data: SignInSchemaType) => {
     console.log("Form submitted:", data);
     // Handle sign in logic here
   };
 
   return (
-    <Center className="rounded-xl bg-background-0">
+    <Center className="rounded-xl bg-background-0 gap-4">
       <Controller
         control={control}
         name="phoneNumber"
-        render={({ field: { value } }) => (
-          <FormControl isInvalid={!!errors.phoneNumber} className="w-full mb-6">
+        render={({ field: { onChange, onBlur, value } }) => (
+          <FormControl isInvalid={!!errors.phoneNumber} className="w-full">
             <FormControlLabel>
               <FormControlLabelText size="sm">
                 Phone Number
               </FormControlLabelText>
             </FormControlLabel>
-            <PhoneInput
-              value={phoneNumberValue}
-              onChangePhoneNumber={handlePhoneNumberChange}
-              selectedCountry={selectedCountry}
-              onChangeSelectedCountry={handleCountryChange}
-              placeholder="Enter your phone number"
-              defaultCountry="NP"
-              className="w-full whitespace-nowrap"
-              maxLength={11} //adjust maxlength as needed
-              theme={isDarkColorScheme ? "dark" : "light"}
-            />
+            <Input className="h-12 rounded-lg">
+              <InputSlot
+                onPress={() => setShowPassword(!showPassword)}
+                className="w-[40px] h-full">
+                <InputIcon as={Phone} />
+              </InputSlot>
+              <HStack>
+                <Text className="px-0">+977</Text>
+              </HStack>
+              <InputField
+                placeholder="Enter your phone number"
+                value={value.replace(/[^0-9]/g, "")}
+                onChangeText={onChange}
+                onBlur={onBlur}
+                keyboardType="phone-pad"
+                maxLength={10}
+              />
+            </Input>
             {errors.phoneNumber && (
               <FormControlError>
                 <FormControlErrorIcon as={AlertCircleIcon} />
@@ -141,13 +115,8 @@ const SignInForm = () => {
           </FormControl>
         )}
       />
-
-      <Button variant="link" size="sm" className="self-end mt-2">
-        <ButtonText>Forgot password?</ButtonText>
-      </Button>
-
       <Button
-        className="mt-8 w-full bg-primary-600 h-12 rounded-lg"
+        className="mt-4 w-full bg-primary-600 h-12 rounded-lg"
         size="sm"
         onPress={handleSubmit(onSubmit)}>
         <ButtonText>Sign In</ButtonText>
@@ -157,8 +126,8 @@ const SignInForm = () => {
         <Text>{`Don't have an account?`}</Text>
         <Link
           href="/(auth)/register"
-          className="flex flex-row justify-center items-center"
-          isPressed>
+          replace
+          className="flex flex-row justify-center items-center">
           <LinkText className="no-underline">Sign Up</LinkText>
         </Link>
       </HStack>
@@ -170,4 +139,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default LoginForm;

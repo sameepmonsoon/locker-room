@@ -38,7 +38,7 @@ export default function RootLayout() {
     setColorMode((prevMode: string) =>
       prevMode === "light" ? "dark" : "light"
     );
-  };  
+  };
 
   const getHeaderOptions = (title: string) => ({
     headerTitle: title,
@@ -60,6 +60,7 @@ export default function RootLayout() {
           <Stack screenOptions={{ animation: "slide_from_right" }}>
             <Stack.Screen name="index" options={{ headerShown: false }} />
             <Stack.Screen name="+not-found" options={{ headerShown: false }} />
+            <Stack.Screen name="(auth)" options={{ headerShown: false }} />
             <Stack.Screen
               name="elements"
               options={getHeaderOptions("UI Elements")}
